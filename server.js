@@ -48,7 +48,7 @@ app.get('/weather', (req, res) => {
   let weatherbitResponde = axios.get(url).then(response => {
     weather = response.data;
     let forecast = weather.data.map(item => {
-      return new Forecast(item)
+      return new ForeCast(item)
     })
     // console.log(forecast)
     res.json(forecast)
@@ -61,8 +61,8 @@ app.get('/weather', (req, res) => {
 
 // ========================================= for movei api 
 app.get('/movies', (req, res)=>{
-  let city_name=req.query.city
- let urlMove=`https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_API_KEY}&query=${city_name}`
+  let city=req.query.city
+ let urlMove=`https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_API_KEY}&query=${city}`
 
  let moveResponce=axios.get(urlMove).then(response => {
    // console.log(response.data.results);
