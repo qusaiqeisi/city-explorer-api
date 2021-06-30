@@ -13,30 +13,6 @@ app.use(cors()) // after you initialize your express app instance
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY
 const MOVIE_API_KEY = process.env.MOVIE_API_KEY
 
-// app.get('/weather', (req, res) => {
-//     let lat = req.query.lat
-//     let lon = req.query.lon
-//     let searchQuery = req.query.searchQuery
-
-
-
-//     let findData = () => {
-//         let city = weatherData.find((city, index) => {
-//           return city.city_name.toLocaleLowerCase() === searchQuery.toLocaleLowerCase()
-//         })
-
-//         return city.data.map(item => {
-
-//           return new ForeCast(item)
-//         }
-//         )
-//       }
-
-//       res.json(findData());
-//     }
-//     );
-
-// ================================== for weather 
 
 app.get('/weather', (req, res) => {
   let weather;
@@ -50,7 +26,6 @@ app.get('/weather', (req, res) => {
     let forecast = weather.data.map(item => {
       return new ForeCast(item)
     })
-    // console.log(forecast)
     res.json(forecast)
   }).catch(err => {
     res.status(500).send(`error in getting data ==> ${err}`)
@@ -59,7 +34,7 @@ app.get('/weather', (req, res) => {
 })
 
 
-// ========================================= for movei api 
+
 app.get('/movies', (req, res)=>{
   let city=req.query.city
  let urlMove=`https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_API_KEY}&query=${city}`
@@ -75,7 +50,6 @@ app.get('/movies', (req, res)=>{
 })
 
 
-/////////////////////////////////////////////////class
 
 })
 class ForeCast {
@@ -87,7 +61,6 @@ class ForeCast {
   }
 }
 
-////monie
 
 class Movie{
   constructor(data){
@@ -105,7 +78,7 @@ class Movie{
 }
 
 
-app.listen(process.env.PORT) // kick start the express server to work
+app.listen(process.env.PORT) 
 
 
 
