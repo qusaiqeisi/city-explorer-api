@@ -2,7 +2,7 @@
 const MOVIE_API_KEY=process.env.MOVIE_API_KEY
 const Movie=require('../model/Movie.Model')
 const axios = require('axios'); // require the package
-
+const cache = require('../utils/cache')
 
 
 const moviesControl=(req, res)=>{
