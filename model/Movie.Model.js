@@ -1,4 +1,5 @@
 'use strict'
+
 class Movie{
     constructor(data){
       this.average_votes = data.vote_average;
