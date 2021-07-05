@@ -33,6 +33,11 @@ const moviesControl = (req, res) => {
   let day = new Date();
   let dayChange = day.getMonth();
 
+//   let moveResponce=axios.get(urlMove).then(response => {
+//     let movie=response.data.results.map(item=>{
+//       return new Movie(item)
+//     })
+
   if (city_name) {
     if (newCache['data'].length > 0 && dayChange === dateByDay) {
       movies = newCache['data'].map(item => {
@@ -54,7 +59,10 @@ const moviesControl = (req, res) => {
       }).catch(err => {
         res.status(500).send(`error in getting data ==> ${err}`)
       })
-
+      res.json(movie)
+      //   }).catch(err=>{
+      //     res.status(500).send(`error in getting data ==> ${err}`)
+      // })
     }
   } else {
     res.send('pleass provide your city name')
